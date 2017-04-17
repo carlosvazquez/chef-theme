@@ -1,11 +1,11 @@
-# Shoperti Bold Theme
-> Este es el tema utilizado en [Bold] (https://bold-theme.shoperti.com/) y puede servirte de inspiración. Puede usar este tema cómo base para crear uno nuevo o realizar ajustes pequeños y modificaciones. Sin duda, puede ser el punto de partida para aprender a construir tus propios temas.
+# Shoperti Chef Theme
+> Este es el tema utilizado en [Chef] (https://chef-theme.shoperti.com/) y puede servirte de inspiración. Puede usar este tema cómo base para crear uno nuevo o realizar ajustes pequeños y modificaciones. Sin duda, puede ser el punto de partida para aprender a construir tus propios temas.
 >
-> ** Para más detalles sobre el desarrollo del tema, lee nuestra [Documentación del tema] (https://github.com/Shoperti-Themes/Bold) **.
+> ** Para más detalles sobre el desarrollo del tema, lee nuestra [Documentación del tema] (https://github.com/Shoperti-Themes/Chef) **.
 
 ## Obteniendo este tema
-1. <a href="https://github.com/Shoperti-Themes/Bold/archive/master.zip"> Descargar </a> la última versión y rama master.
-2. También puedes clonar el reporte git: <code>git clone git@github.com:Shoperti-Themes/Bold.git</code>
+1. <a href="https://github.com/Shoperti-Themes/Chef/archive/master.zip"> Descargar </a> la última versión y rama master.
+2. También puedes clonar el reporte git: <code>git clone git@github.com:Shoperti-Themes/Chef.git</code>
 
 ![alt text](https://raw.githubusercontent.com/Shoperti-Themes/Bold/master/screenshot.png "Screeshot")
 
