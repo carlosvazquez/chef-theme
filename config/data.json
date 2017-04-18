@@ -69,9 +69,6 @@
       "slide_4_btn_text": "Ver más",
       "slide_4_btn_link": "#",
 
-
-
-
       "product_background_card": "rgba(255,255,255,0);",
       "product_thumbnail_type": "square",
       "product_ribbon_bg": "#00a0c6",
@@ -138,7 +135,13 @@
       "map_address": "Mexico City",
       "map_zoom": "14",
       "map_marker": true,
-      "map_api_key": "AIzaSyBjWefNJdkFjr8IC6izNHSj-9hJzCwIAr0"
+      "map_api_key": "AIzaSyBjWefNJdkFjr8IC6izNHSj-9hJzCwIAr0",
+      "display_vendor": true,
+      "vendor_name": "Marca",
+      "sku_title": "SKU",
+      "product_status_available_text": "DISPONIBLE",
+      "product_status_not_available_text": "AGOTADO"
+
     }
   }
 }

@@ -125,15 +125,124 @@
   <div class="row">
     <div class="col-md-9 col-md-push-3">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-6">
-          <div class="product-page__content">
-            <img class="img-responsive" src="http://fakeimg.pl/650x400/ff0000,128/000,255">
+        <div class="carousel">
+          <div class="col-xs-12 col-sm-6 col-md-8">
+            <!-- {% if product.images | length == 0 %} -->
+              <div class="carousel__container">
+                <img class="img-responsive carousel__image" src="http://fakeimg.pl/650x400/ff0000,128/000,255">
+                <!-- <img class="img-responsive" src="{{ 'placeholders/product-15.jpg' | global_img_url }}" alt="{{ product.name }}" id="zoom"> -->
+              </div>
+            <!-- {% elseif product.images | length == 1 %} -->
+            <!-- <div class="carousel__container">
+                <img class="img-responsive carousel__image" src="{{ product.image_url }}&w=600&h={{ height }}&fit=crop" width="600" alt="{{ product.name }}" id="zoom">
+              </div> -->
+            <!-- {% else %} -->
+            <!-- <div class="carousel__container">
+                <img class="img-responsive carousel__image" src="{{ product.image_url }}&w=600&h={{ height }}&fit=crop" width="600" alt="{{ product.name }}" id="zoom">
+              </div> -->
+            <!-- {% endif %} -->
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6">
-          <div class="product-page__header block_title">
-            <h1 class="product-page__title title">{{ product.name }}</h1>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 product">
+          <div class="header">
+            <p class="header__status">
+            <!-- {% if not product.is_in_stock %} -->
+            <span class="label label-danger">{{ settings.product_status_not_available_text }}</span>
+            <!-- {% else %} -->
+            <span class="label label-success">{{ settings.product_status_available_text}}</span>
+            <!-- {% endif %} -->
+            </p>
+            <div class="vendor">
+              <!-- {% if product.vendor_name is not null and settings.display_vendor %} -->
+              <p class="vendor__sku">Marca: <strong>Provolone</strong><!-- {{ settings.vendor_name }}: <strong>{{ product.vendor_name | title }}--></strong></p>
+              <!-- {% endif %} -->
+            </div>
+            <h1 class="header__title">Antartida Extra Shoperti <!-- {{ product.name }}--></h1>
+            <!-- {% if settings.show_sku_code and product.sku.code is not empty %} -->
+            <p id="js-sku-id" class="header__sku">SKU: <span class="label-sku">HKJ786</span><!-- {{ settings.sku_title }}: <span>{{ product.sku.code }}</span>--></p>
+            <!-- {% endif %} -->
           </div>
+
+          <div class="price-preview" id="js-price-preview">
+            <!-- {% if product.compared_price %} -->
+              <p class="price-preview__compared-price"><span class="inner">$ 2,909.00<!-- {{ product.compared_price is defined ? product.compared_price | money('symbol', 'code') : '' }}--></span></p>
+            <!-- {% endif %} -->
+            <p class="price-preview__price">$ 1,909.00<!-- {{ product.price | money('symbol', 'code') }}--></p>
+          </div>
+
+          <div class="quantity">
+            <div class="input-group">
+              <span class="input-group-btn left">
+                <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quantity">
+                    <span class="mdi mdi-minus"></span>
+                </button>
+              </span>
+              <input id="quantity" type="text" name="quantity" class="form-control input-number" value="1" min="1" max="10">
+              <span class="input-group-btn right">
+                <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quantity">
+                    <span class="mdi mdi-plus"></span>
+                </button>
+              </span>
+            </div>
+          </div> <!-- .quantity -->
+          <div class="selector">
+            <form class="product_selection" action="/carrito/agregar" method="post">
+              <input type="hidden" name="sku_id" value="{{ product.sku.id }}" id="js-sku-new">
+              <input type="hidden" name="quantity" value="1" id="js-quantity">
+              <div class="col-xs-12">
+              <!-- {% if product.skus_modifiers | length > 0 %} -->
+                <!-- {% for attribute, attribute_variants in product.skus_modifiers %} -->
+                  <!-- {% if settings.product_tagcolor and attribute | lower == 'color' %} -->
+                  <p class="product-features hide-product-{{ index }}">{{ attribute | title }}</p>
+                  <div class="form-group product-page__tagcolor hide-product-{{ index }}">
+                    <!-- {% set step = loop.index - 1 %} -->
+                    <!-- {% set default_variant = product.sku.modifiers[step] %} -->
+
+                    <!-- {% for variant in attribute_variants %} -->
+                      <input id="{{ product.sku.id }}_{{ variant }}_{{ loop.index0 }}" type="radio" name="{{ step }}" value="{{ variant }}" class="js-variant-select" {% if default_variant == variant %}checked="checked"{% endif %}>
+                    <!-- {% endfor %} -->
+                  </div>
+                  <!-- {% else %} -->
+                  <p class="product-features hide-product-{{ index }}">{{ attribute | title }}</p>
+                  <div class="form-group hide-product-{{ index }}">
+                    <!-- {% set step = loop.index - 1 %} -->
+                    <!-- {% set default_variant = product.sku.modifiers[step] %} -->
+                    <!-- {% for variant in attribute_variants %} -->
+                    <label for="{{ product.sku.id }}_{{ variant }}_{{ loop.index0 }}"><input id="{{ product.sku.id }}_{{ variant }}_{{ loop.index0 }}" type="radio" name="{{ step }}" value="{{ variant }}" class="js-variant-select" <!-- {% if default_variant == variant %} --> checked="checked" <!-- {% endif %}--> > <!-- {{ variant | title }}--></label>
+                    <!-- {% endfor %} -->
+                  </div>
+                  <!-- {% endif %} -->
+
+                <!-- {% endfor %} -->
+              <!-- {% endif %} -->
+              </div>
+              
+              <!--  {% if product.is_in_stock %} -->
+              <div class="stock">
+                <button type="submit" class="btn btn-primary btn-block" id="js-add-to-cart">
+                  <i class="fa fa-cart-plus"></i>
+                  Añadir al carrito
+                </button>
+                <!-- {% else %} -->
+                <button class="btn btn-primary btn-block js-add-to-cart-disabled" disabled="disabled">
+                  No disponible
+                </button>
+              </div>
+              <!-- {% endif %} -->
+              
+            </form>
+          </div> <!-- .selector -->
+          <!-- {% if product.description is not empty %} -->
+          <div class="product__description">
+            <h4>Descripción:</h4>
+              {{ product.description }}
+              Nuestra tienda de alimentos fue fundada en 2001 y sólo en 2004 hemos lanzado la versión en línea de nuestra tienda. Estamos encantados de dar la bienvenida a los clientes de todo el mundo y ofrecer la mejor comida e ingredientes para su alegría!
+              <hr class="spacer light">
+          </div> <!-- ,product-description -->
+          <!-- {% endif %} -->
+
+
         </div>
 
       </div> 
@@ -144,42 +253,16 @@
         <h4 class="sidebar__sidebar-title">Colecciones<!-- {{ settings.collections_sidebar_title }}--></h4>
         <ul class="sidebar__sidebar-list">
           <li class="sidebar__sidebar-item">
-            <a class="sidebar__sidebar-list-title" href="#">Colección 1</a>
-            <a class="sidebar__sidebar-list-toggle" href="#"><i class="mdi mdi-chevron-down" aria-hidden="true"></i></a>
-            <ul class="sidebar__sidebar-submenu">
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-            </ul>
+            <a class="sidebar__sidebar-list-title" href="#">Collección 1</a>
           </li>
           <li class="sidebar__sidebar-item">
-            <a class="sidebar__sidebar-list-title" href="#">Colección 2</a>
-            <a class="sidebar__sidebar-list-toggle" href="#"><i class="mdi mdi-chevron-down" aria-hidden="true"></i></a>
-            <ul class="sidebar__sidebar-submenu">
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item">
-                <a class="sidebar__sidebar-list-title" href="#">Colección 3</a>
-                <a class="sidebar__sidebar-list-toggle" href="#"><i class="mdi mdi-chevron-down" aria-hidden="true"></i></a>
-                <ul class="sidebar__sidebar-submenu">
-                  <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-                  <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-                  <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-                </ul>
-              </li>
-            </ul>
+            <a class="sidebar__sidebar-list-title" href="#">Collección 2</a>
           </li>
           <li class="sidebar__sidebar-item">
-            <a class="sidebar__sidebar-list-title" href="#">Colección 4</a>
-            <a class="sidebar__sidebar-list-toggle" href="#"><i class="mdi mdi-chevron-down" aria-hidden="true"></i></a>
-            <ul class="sidebar__sidebar-submenu">
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-              <li class="sidebar__sidebar-item"><a class="sidebar__sidebar-item-link" href="#">AAAA</a></li>
-            </ul>
+            <a class="sidebar__sidebar-list-title" href="#">Collección 3</a>
           </li>
           <li class="sidebar__sidebar-item">
-            <a class="sidebar__sidebar-list-title" href="#">Collección 5</a>
+            <a class="sidebar__sidebar-list-title" href="#">Collección 4</a>
           </li>
         </ul>
         <h4 class="sidebar__sidebar-title">Categorías<!-- {{ settings.categories_sidebar_title }}--></h4>
@@ -352,6 +435,63 @@
   <!-- <script src="{{ 'app.js' | asset_url }}"></script> -->
   <script> document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>') </script>
   <script src="assets/app.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    var qty = $("input#quantity");
+    $('.btn-number').click(function(e){
+      e.preventDefault();
+      fieldName = $(this).attr('data-field');
+      type      = $(this).attr('data-type');
+      var input = $("input[name='"+fieldName+"']");
+      var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+          if(type == 'minus') {
+            if(currentVal > input.attr('min')) {
+              input.val(currentVal - 1).change();
+            } 
+            if(parseInt(input.val()) == input.attr('min')) {
+              $(this).attr('disabled', true);
+            }
+          } else if(type == 'plus') {
+            if(currentVal < input.attr('max')) {
+                input.val(currentVal + 1).change();
+            }
+            if(parseInt(input.val()) == input.attr('max')) {
+                $(this).attr('disabled', true);
+            }
+          }
+        } else {
+        input.val(0);
+        }
+    });
+    $('.input-number').focusin(function(){
+     $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function() {
+      initValue = parseInt($(this).val());
+      minValue =  parseInt($(this).attr('min'));
+      maxValue =  parseInt($(this).attr('max'));
+      valueCurrent = parseInt($(this).val());
+      name = $(this).attr('name');
+      if(valueCurrent >= minValue) {
+          $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+          qty.attr('value', valueCurrent);
+      } else {
+          $(this).val($(this).data('oldValue'));
+          qty.attr('value', $(this).data('oldValue'));
+      }
+      if(valueCurrent <= maxValue) {
+          $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled');
+          qty.attr('value', valueCurrent);
+      } else {
+          $(this).val($(this).data('oldValue'));
+          qty.attr('value', $(this).data('oldValue'));
+      }
+    });
+    console.log(qty);
+
+  });
+  </script>
 
   <!-- end replace -->
   <!-- {% endblock %} -->
