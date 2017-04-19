@@ -81,14 +81,13 @@ module.exports = {
       { from: './src/html/partials/_social-share.twig', to: 'partials/_social-share.html' },
       { from: './src/images/', to: 'images' },
       { from: './src/assets/', to: 'assets' }
-      ], 
+      ],
       {ignore: [
         // Doesn't copy any files with a scss extension    
         '*.scss',
-        'components',
         'components/*.scss'
       ]},
-      { copyUnmodified: false }),
+      { copyUnmodified: true }),
     new ExtractTextPlugin('assets/styles.css'),
     new WebpackShellPlugin({
       onBuildExit: ['node convert-twig-params.js']
