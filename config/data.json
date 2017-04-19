@@ -121,6 +121,10 @@
       "collections_page_title": "Colecciones",
       "categories_sidebar_title": "Categorías",
       "collections_sidebar_title": "Colecciones",
+      "sidebar_bg_color": "#ffffff",
+      "sidebar_lines_color": "#eeeeee",
+      "sidebar_titles_color": "#555555",
+      "sidebar_texts_color": "#555555",
       "footer": true,
       "footer_title_color": "#f15a29",
       "footer_text_color": "#666666",
@@ -140,7 +144,9 @@
       "vendor_name": "Marca",
       "sku_title": "SKU",
       "product_status_available_text": "DISPONIBLE",
-      "product_status_not_available_text": "AGOTADO"
+      "product_status_not_available_text": "AGOTADO",
+      "product_thumbnail_form": "thumbnail_landscape",
+      "post_thumbnail_form": "thumbnail_square"
 
     }
   }

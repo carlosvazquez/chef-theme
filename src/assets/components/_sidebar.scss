@@ -1,11 +1,12 @@
 .sidebar {
-  color: $body_font_color;
+  color: $sidebar_texts_color;
   a {
     text-decoration: none;
-    color: $body_font_color;
+    color: $sidebar_texts_color;
   }
   a:hover {
     color: $main_link_color;
+    text-decoration: none;
   }
   
   &__header {
@@ -20,6 +21,13 @@
   &__sidebar-container {
     position: relative;
     margin-top: 0;
+    border-left: 1px solid $sidebar_lines_color;
+    padding-left: 1em;
+    color: $sidebar_texts_color;
+    background-color: $sidebar_bg_color;
+    @media(min-width:1200px) {
+      margin-top: 3em;
+    }
   }
 
   &__sidebar {
@@ -40,22 +48,27 @@
     }
 
     &-title {
-      margin-top: 0;
-      font-size: 24px;
-      color: $brand_main_color;
+      font-size: 18px;
+      color: $sidebar_titles_color;
       font-weight: normal;
+      margin-top: 0;
+      margin-left: -.9em;
+      padding-left: .6em;
+      border-left: 4px solid $brand_main_color;
+      text-transform: uppercase;
     }
     &-list {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       &-title {
         position: relative;
-        color: $body_font_color !important;
+        color: $sidebar_titles_color !important;
         display: block;
         width: 100%;
-        padding: 8px 15px 8px 0;
+        padding: 12px 15px 12px 0;
       }
       &-title:hover {
         color: $main_link_color !important;
+        text-decoration: none;
       }
       &-toggle {
           position: absolute;
@@ -64,7 +77,7 @@
           z-index: 99;
           padding: 8px 0 8px 15px;
         i.mdi {
-          color: $brand_main_color;
+          color: $sidebar_texts_color;
 
         }
       }
@@ -77,6 +90,11 @@
         display: block;
         width: 100%;
         padding: 8px 15px;
+        color: $sidebar_texts_color;
+      }
+      &-link:hover {
+        color: $main_link_color !important;
+        text-decoration: none;
       }
     }
 

@@ -78,6 +78,7 @@ module.exports = {
       { from: './src/html/customers/recover.twig', to: 'customers/recover.html' },
       { from: './src/html/customers/register.twig', to: 'customers/register.html' },
       { from: './src/html/customers/reset.twig', to: 'customers/reset.html' },
+      { from: './src/html/partials/_social-share.twig', to: 'partials/_social-share.html' },
       { from: './src/images/', to: 'images' },
       { from: './src/assets/', to: 'assets' }
       ],

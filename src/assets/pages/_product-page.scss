@@ -88,7 +88,7 @@
         .input-group-btn {
           position: absolute;
           button {
-            height:100%; width: 50px; font-size:24px; border-color: rgba(150,150,150,.5);
+            height:100%; width: 50px; font-size:24px; border-color: rgba(255,255,255,0);
             .mdi {}
           }
         }
@@ -139,5 +139,13 @@
       }
     }
 
+  }
+  .related_products {
+    &__title {
+      color: $brand_main_color;
+      font-weight: normal;
+      font-size: 2em;
+      margin-bottom: .5em;
+    }
   }
 }

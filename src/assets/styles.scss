@@ -1,14 +1,14 @@
 // Modules and Variables
-@import 'partials/config';
+@import 'base/config';
 
 // Partials
-@import 'partials/reset';
-@import 'partials/helpers';
-@import 'partials/grid';
-@import 'partials/typography';
-@import 'partials/buttons';
-@import 'partials/navigation';
-@import 'partials/second-navigation';
+@import 'base/reset';
+@import 'base/helpers';
+@import 'base/grid';
+@import 'base/typography';
+@import 'base/buttons';
+@import 'components/navigation';
+@import 'components/second-navigation';
 @import 'components/featured-intro-home';
 @import 'components/featured-slider-home';
 @import 'components/featured-best-collections';
@@ -21,6 +21,7 @@
 @import 'components/footer';
 @import 'components/footer-legal';
 @import 'components/sidebar';
+@import 'components/social-share';
 @import 'pages/simple-page';
 @import 'pages/collections-page';
 @import 'pages/collection-page';
