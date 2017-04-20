@@ -83,8 +83,11 @@ module.exports = {
       { from: './src/assets/', to: 'assets' }
       ],
       {ignore: [
-        // Doesn't copy any files with a scss extension    
+        // Doesn't copy any files with a extension    
         '*.scss',
+        '.DS_Store',
+        'base/*',
+        'pages/*',
         'components/*.scss'
       ]},
       { copyUnmodified: true }),
