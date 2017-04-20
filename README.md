@@ -1,16 +1,16 @@
-# Shoperti Chef Theme
-> Este es el tema utilizado en [Chef] (https://chef-theme.shoperti.com/) y puede servirte de inspiración. Puede usar este tema cómo base para crear uno nuevo o realizar ajustes pequeños y modificaciones. Sin duda, puede ser el punto de partida para aprender a construir tus propios temas.
+# Shoperti Gourmet Theme
+> Este es el tema utilizado en [Gourmet] (https://gourmet-theme.shoperti.com/) y puede servirte de inspiración. Puedes usarlo cómo base para crear uno nuevo o realizar ajustes pequeños y modificaciones. Sin duda, puede ser el punto de partida para aprender a construir tus propios temas desde cero.
 >
-> ** Para más detalles sobre el desarrollo del tema, lee nuestra [Documentación del tema] (https://github.com/Shoperti-Themes/Chef) **.
+> ** Para más detalles sobre el desarrollo del tema, lee nuestra [Documentación del tema] (https://github.com/Shoperti-Themes/Gourmet) **.
 
 ## Obteniendo este tema
-1. <a href="https://github.com/Shoperti-Themes/Chef/archive/master.zip"> Descargar </a> la última versión y rama master.
-2. También puedes clonar el reporte git: <code>git clone git@github.com:Shoperti-Themes/Chef.git</code>
+1. <a href="https://github.com/Shoperti-Themes/Gourmet/archive/master.zip"> Descargar </a> la última versión y rama master.
+2. También puedes clonar el reporte git: <code>git clone git@github.com:Shoperti-Themes/Gourmet.git</code>
 
 ![alt text](https://raw.githubusercontent.com/Shoperti-Themes/Bold/master/screenshot.png "Screeshot")
 
 ## Implementación manual
-La opción más sencilla si no desea realizar cambios en el tema es cargar el archivo [theme.zip] (dist/theme.zip) encontrado dentro de la carpeta 'dist' una vez descargado el paquete completo.
+La opción más sencilla si no deseas realizar cambios en el tema es cargar el archivo [theme.zip] (dist/theme.zip) encontrado dentro de la carpeta 'dist' una vez ya descargado el paquete completo.
 
 **Puede realizar cualquier cambio directamente descomprimiendo el archivo zip, sin embargo no es recomendable porque puede dañar alguna parte del código**
 
@@ -41,13 +41,9 @@ npm run start
 npm run serve
 ```
 
-```npm run start``` servirá para publicar tus archivos html, estilos y scripts en la carpeta **public** y así construir tu sitio sin funcionalidades de Twig.
+```npm run start``` servirá para publicar tus archivos html, estilos y scripts en la carpeta **public** y así construir tu sitio sin funcionalidades de Twig. Incluye un servidor http para ver el sitio usando la ruta http://localhost:9000
 
-```npm run start``` generará una carpeta que te servirá para probar tu plantilla en ambiente local, los archivos serán ```.twig``` 
-
-```npm run start``` inicia un servidor que leerá tus páginas html con estilos y scripts.
-
-```npm run serve``` inicia un servidor que leerá tus páginas html con estilos y scripts.
+```npm run start``` generará una carpeta 'theme' dentro de 'dist' que te servirá para probar tu plantilla en ambiente local, los archivos serán ```.twig``` 
 
 Estas tareas toman el código fuente del tema y empaquetan en un zip para ser instalado.
 
