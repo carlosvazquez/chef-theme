@@ -58,7 +58,6 @@ module.exports = {
     new ExtractTextPlugin('assets/styles.css.twig'),
     new CopyWebpackPlugin([
       { from: './src/pages/', to: 'pages' },
-      { from: './src/images/', to: 'images' },
       { from: './src/assets/', to: 'assets' }
       ], 
       {ignore: [
@@ -71,7 +70,7 @@ module.exports = {
       ]},
       { copyUnmodified: true }),
     new WebpackShellPlugin({
-      onBuildEnd: ['node convert-twig-params.js']
+      onBuildEnd: ['node convert-twig-params-prod.js']
     })
   ]
 }

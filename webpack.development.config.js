@@ -17,6 +17,7 @@ module.exports = {
     filename: 'assets/[name].js',
     publicPath: '/assets/'
   },
+
   module: {
     rules: [
     {
@@ -91,9 +92,12 @@ module.exports = {
         'components/*.scss'
       ]},
       { copyUnmodified: true }),
+    new webpack.ProvidePlugin({
+      'utils': 'utils'
+    }),
     new ExtractTextPlugin('assets/styles.css'),
     new WebpackShellPlugin({
-      onBuildExit: ['node convert-twig-params.js']
+      onBuildExit: ['node convert-twig-params.js --env=true']
     })
   ]
 }

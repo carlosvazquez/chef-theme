@@ -3,7 +3,7 @@ var utils = require('./utils');
 var json = require('./config/data.json');
 var newjson  = JSON.stringify(json);
 var params = json.presets.Base;
-var env = utils.environment();
+var env = true;
 
 var convertStyles = function(path) {
   for (var key in params){
@@ -11,7 +11,7 @@ var convertStyles = function(path) {
     replace({
       regex: "\"{{ settings."+key+" ",
       replacement: params[key]+" ",
-      paths: ['./' + path + '/assets/styles.css'],
+      paths: ['./' + path + '/assets/styles.css.twig'],
       recursive: true,
       silent: true,
     });
@@ -20,7 +20,7 @@ var convertStyles = function(path) {
   replace({
     regex: " }}\"",
     replacement: "",
-    paths: ['./' + path + '/assets/styles.css'],
+    paths: ['./' + path + '/assets/styles.css.twig'],
     recursive: true,
     silent: true,
   });

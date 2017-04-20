@@ -33,7 +33,7 @@ module.exports = {
       newValue: '}}'
     }),
     new WebpackShellPlugin({
-      // onBuildEnd: ['node removefiles.js']
+      onBuildEnd: ['node removefiles.js']
     }),
     new CopyWebpackPlugin([
       { from: './dist/assets/app.js', to: 'assets/app.js.twig' },
