@@ -45,7 +45,11 @@ module.exports = {
     }
     ]
   },
-
+  externals: {
+    jquery: 'jQuery',
+    slick: 'slick-carousel'
+  },
+  
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -60,7 +64,9 @@ module.exports = {
       {ignore: [
         // Doesn't copy any files with a scss extension    
         '*.scss',
-        'components',
+        '.DS_Store',
+        'base/*',
+        'pages/*',
         'components/*.scss'
       ]},
       { copyUnmodified: false }),
