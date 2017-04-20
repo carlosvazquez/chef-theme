@@ -49,7 +49,7 @@ module.exports = {
     jquery: 'jQuery',
     slick: 'slick-carousel'
   },
-  
+
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
@@ -69,7 +69,7 @@ module.exports = {
         'pages/*',
         'components/*.scss'
       ]},
-      { copyUnmodified: false }),
+      { copyUnmodified: true }),
     new WebpackShellPlugin({
       onBuildEnd: ['node convert-twig-params.js']
     })
